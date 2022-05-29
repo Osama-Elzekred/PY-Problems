@@ -12,8 +12,6 @@ for key in Dict_keys[:3]:
     print(key, Dict[key])
 
 
-# class OrderedCounter(Counter, OrderedDict):
-#     pass
 # qwertyuiopasdfghjklzxcvbnm
 # aabbbccde
 
