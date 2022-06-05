@@ -1,4 +1,4 @@
-from itertools import product
+from itertools import product, Compinations
 
 
 def sum1(x):
@@ -7,6 +7,8 @@ def sum1(x):
         total += i**2
     return total
 
+
+co
 
 k, m = map(int, input().split())
 l = []
