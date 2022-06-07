@@ -8,8 +8,6 @@ def sum1(x):
     return total
 
 
-co
-
 k, m = map(int, input().split())
 l = []
 for i in range(k):
