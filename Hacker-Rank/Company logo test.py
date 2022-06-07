@@ -1,4 +1,4 @@
-from collections import Counter, OrderedDict
+from collections import Counter
 Dict = {}
 for x in sorted(input()):
     Dict[x] = Dict.get(x, 0)+1
