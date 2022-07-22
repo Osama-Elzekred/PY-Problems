@@ -1,7 +1,4 @@
 
-from traceback import print_list
-
-
 class Node:
 
     def __init__(self, data):
@@ -91,19 +88,60 @@ class SinglyLinkedList:
             node.data = values.pop(-1)  # replace the value of nodes
         return self.head
 
+    def quick_sort(self):
+        listNodes = []
+        cur = self.head
+        while cur:
+            listNodes.append(cur)
+            cur = cur.next
+
+        def rec(listNodes):
+            if len(listNodes) < 2:
+                return listNodes
+            povit = listNodes[0]
+            left = []
+            right = []
+            povits = []
+            flag = True
+            for item in listNodes:
+                if item.data == povit.data and flag:
+                    flag = False
+                    continue
+                elif item.data == povit.data:
+                    povits.append(item)
+                elif item.data < povit.data:
+                    left.append(item)
+                else:
+                    right.append(item)
+            povits.append(povit)
+            return rec(left)+povits+rec(right)
+        listNodes = rec(listNodes)
+        self.head = listNodes[0]
+        listNodes[-1].next = None
+        for i, n in enumerate(listNodes):
+            if i < len(listNodes)-1:
+                listNodes[i].next = listNodes[i+1]
+        return listNodes
+
 
 list1 = SinglyLinkedList()
-list1.insert_node(2)
-list1.insert_node("osama")
-list1.insert_node(67)
-list1.insert_node(False)
-list1.insertAt(34, 1)
-list1.insert_node(99)
-list1.insert_node(4)
+list1.insert_node(5)
+list1.insert_node(9)
+list1.insert_node(0)
+list1.insert_node(-2)
+# list1.insertAt(34, 1)
+list1.insert_node(5)
+# list1.insert_node(4)
+# list1.insert_node(-2)
 list1.printlist()
+nodes = list1.quick_sort()
+
 print()
-list1.getdata()
-list1.reverseBetween(2, 6)
+for item in nodes:
+    print(f"{item.data}-->", end='')
+print()
+# list1.getdata()
+# list1.reverseBetween(2, 6)
 list1.printlist()
 # q = 'osama'
 # print(f"{q}")
