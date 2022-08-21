@@ -8,11 +8,12 @@ def searchRange(nums, target):
         index = (l+r)//2
         mid = nums[index]
         if mid == target:
-            while nums[l] != mid:
-                l += 1
-            while nums[r] != mid:
-                r -= 1
-            output = [l, r]
+            low, high = mid-1, mid+1
+            while nums[low] == mid:
+                low -= 1
+            while nums[high] == mid:
+                high += 1
+            output = [low, high]
             break
         elif mid < target:
             l = index+1

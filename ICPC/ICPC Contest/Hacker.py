@@ -1,13 +1,13 @@
-l=[]
-flag=0
-n=int(input())
+
+n = int(input())
 for i in range(n):
-  N,M=[int(x) for x in input().split()]
-  for j in range(N):
-    I,J=[int(x) for x in input().split()]
-    if (I,J) in l :
-      flag=1 
-    l.append((I,J))
-  if (flag==1):print("YES")
-  else:print("NO")
-# print(l)
+    N, M = [int(x) for x in input().split()]
+    s = set()
+    for j in range(N):
+        K, V = [x for x in input().split()]
+        s.add((K, V))
+    # print(len(s))
+    if (len(s) != N):
+        print("YES")
+    else:
+        print("NO")

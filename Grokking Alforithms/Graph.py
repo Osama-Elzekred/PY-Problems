@@ -25,6 +25,7 @@ class Graph:
             path = path+[start]
             if start == end:
                 pathes.append(path)
+
             if start not in self.graph:
                 return []
             for node in self.graph[start]:
@@ -37,19 +38,28 @@ class Graph:
 
     def breadth_frist_search(self, start, end):  # search the neighbours frist
         search_queue = deque()
-        searched = []
+        searched = {}
+        visted = {}
+        searched[start] = 0
         search_queue += [start]
         while search_queue:
             position = search_queue.popleft()
-            if not position in searched:
+            level = searched[position]+1
+            if not visted.get(position, False):
                 if position == end:
+                    print(searched)
                     return True
-                searched.append(position)
-                search_queue += self.graph.get(position, [])
+                added_neighbours = self.graph.get(position, [])
+                for neighbour in added_neighbours:
+                    searched[neighbour] = searched.get(neighbour, level)
+
+                search_queue += added_neighbours
+                visted[position] = 1
+        print(searched)
         return False
 
     def getShortesPath(self, start, end, path=[]):
-        mx = float("infinity")
+        mx = float("inf")
         pathes = []
 
         def rec(start, end, mx, path=[]):
@@ -82,8 +92,9 @@ if __name__ == '__main__':
         ("Paris", "New York"),
         ("Dubai", "New York"),
         ("New York", "Toronto"),
+        ("Paris", "lol"),
     ]
     gh1 = Graph(routes)
     # pathes = gh1.getPathes("Mumbai", "New York")
-    print(gh1)
-    print(gh1.breadth_frist_search("Paris", "Toronto"))
+    # print(gh1.getPathes("Mumbai", "New York"))
+    print(gh1.breadth_frist_search("Mumbai", "New York"))
