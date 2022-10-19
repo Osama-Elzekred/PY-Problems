@@ -16,6 +16,9 @@ ll d(int n)
   }
   return count ;
 }
+
+
+
 int main()
 {
   FIO 

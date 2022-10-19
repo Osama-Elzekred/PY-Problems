@@ -12,20 +12,25 @@ int commDiv(int a, int b)
 {
     int n = gcd(a, b);
  
-    int result = 0;
-    for (int i = 1; i <= sqrt(n); i++) {
-        if (n % i == 0) {
-            if (n / i == i)
-                result += 1;
+    return numOfDiv(n);
+}
+
+int numOfDiv(int num) {
+    int cnt = 0;
+    for(int i=1;i*i<=num;i++) {
+        if(num%i == 0) {
+            if(num/i == i)
+                cnt++;
             else
-                result += 2;
+                cnt += 2;
         }
     }
-    return result;
+    return cnt;
 }
  
 int main()
-{
+{   ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
    int t;
    cin>>t;
    long long x,y,mx,mn;
