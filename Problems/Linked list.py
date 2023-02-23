@@ -12,6 +12,16 @@ class SinglyLinkedList:
         self.head = None
         self.tail = None
 
+    def reverse(self):
+        self.tail = self.head
+        prev, cur = None, self.head
+        while cur:
+            temp = cur.next
+            cur.next = prev
+            prev = cur
+            cur = temp
+        self.head = prev
+
     def listlenght(self):
         currentnode = self.head
         lenght = 0
@@ -142,6 +152,7 @@ for item in nodes:
 print()
 # list1.getdata()
 # list1.reverseBetween(2, 6)
+list1.reverse()
 list1.printlist()
 # q = 'osama'
 # print(f"{q}")
